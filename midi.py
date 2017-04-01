@@ -17,11 +17,11 @@ patches = [
     [10,4],         #7     comp + slap
     [10,4],         #8     comp + slap
     [10,4],         #9     comp + slap
-    [10,4],         #10     comp + slap
-    [11,4],         #11     drive + slap
-    [12,1],         #12     heavy drive + mod delay 3/16    
-    [13,4],         #13     heavy drive, oct + slap
-    [14,4],         #14     heavy drive, oct, flanger + slap
+    [10,5],         #10     comp + slap verb
+    [11,5],         #11     drive + slap verb
+    [12,5],         #12     heavy drive + slap verb    
+    [13,5],         #13     heavy drive, oct + slap verb
+    [14,5],         #14     heavy drive, oct, flanger + slap verb
     [10,3],         #15     comp + particle verb
     [11,4],         #16     drive + slap 
     [15,4],         #17     drive, phaser + slap
