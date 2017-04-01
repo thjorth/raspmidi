@@ -1,6 +1,7 @@
 import rtmidi
 import re
 import time
+import sys
 
 
 patches = [
@@ -82,7 +83,7 @@ class MidiInputHandler(object):
             m5out.send_message([192, m5_pc])
             
         except:
-            print "Unexpected error:", sys.exc_info()[0]
+            print ("Unexpected error:", sys.exc_info()[0])
             zoomout.send_message(message)
             m5out.send_message(message)
 
