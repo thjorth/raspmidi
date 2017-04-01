@@ -57,6 +57,7 @@ class MidiInputHandler(object):
     def __call__(self, event, data=None):
         message, dtime = event
         zoomout.send_message(message)
+        m5out.send_message(message)
         print("{}".format(message))
 
 midiin.set_callback(MidiInputHandler(available_in_ports[uno_index]))
