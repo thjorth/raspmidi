@@ -25,7 +25,7 @@ patches = [
     [10,3],         #15     comp + particle verb
     [11,4],         #16     drive + slap 
     [15,4],         #17     drive, phaser + slap
-    [11,8],         #18     drive + mod delay 1/8
+    [11,6],         #18     drive + mod delay 1/8
     [11,2],         #19     drive + analog chorus
     [10,24],        #20     comp + bypass     
     [11,6],         #21     drive + mod delay
