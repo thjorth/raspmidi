@@ -6,6 +6,7 @@ import sys
 
 
 
+
 patches = [
     [10,4],         #1     comp + slap
     [10,4],         #2     comp + slap
@@ -22,10 +23,10 @@ patches = [
     [13,4],         #13     heavy drive, oct + slap
     [14,4],         #14     heavy drive, oct, flanger + slap
     [10,3],         #15     comp + particle verb
-    [15,4],         #16     drive, phaser + slap 
-    [11,1],         #17     drive + mod delay
-    [11,2],         #18     drive + analog chorus
-    [12,2],         #19     heavy drive + analog chorus
+    [11,4],         #16     drive + slap 
+    [15,4],         #17     drive, phaser + slap
+    [11,8],         #18     drive + mod delay 1/8
+    [11,2],         #19     drive + analog chorus
     [10,24],        #20     comp + bypass     
     [11,6],         #21     drive + mod delay
     [12,6],         #22     heavy drive + mod delay
@@ -39,7 +40,7 @@ patches = [
     [6,3],          #31
     [6,3],          #32
     [6,3],          #33
-    [6,3],          #34
+    [6,3]           #34
 ]
 
 zoomout = rtmidi.MidiOut()
