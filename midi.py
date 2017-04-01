@@ -7,7 +7,10 @@ patches = [
     [-1,-1],
     [1,1],
     [2,1],
-    [3,1]
+    [3,1],
+    [4,2],
+    [5,2],
+    [6,3]
 ]
 
 zoomout = rtmidi.MidiOut()
@@ -63,12 +66,14 @@ class MidiInputHandler(object):
     def __call__(self, event, data=None):
         message, dtime = event
         pc = message[1];
+        print("pc: {}".format(pc))
         try:
             cmd = pathces[pc]
-            zoom_pc = cmd[0]
+            
+            zoom_pc == cmd[0]
             if zoom_pc < 0:
                 zoom_pc = 50
-            m5_pc = cmd[1]
+            m5_pc == cmd[1]
             if m5_pc < 0:
                 m5_pc = 24;
             
@@ -79,7 +84,6 @@ class MidiInputHandler(object):
         except:
             zoomout.send_message(message)
             m5out.send_message(message)
-        print("{}".format(pc))
 
 midiin.set_callback(MidiInputHandler(available_in_ports[uno_index]))
 
