@@ -2,7 +2,7 @@ import rtmidi
 import re
 import time
 
-midiout = rtmidi.MidiOut()
+zoomout = rtmidi.MidiOut()
 available_out_ports = midiout.get_ports()
 
 midiin = rtmidi.MidiIn()
@@ -37,15 +37,16 @@ while zoom_index == None or uno_re == None:
 zoom_index = 2
 uno_index = 1
 
+print("Checking GIT workflow")
 print("Opening for input {}".format(available_in_ports[uno_index]))
 print("Opening for output {}".format(available_out_ports[zoom_index]))
-midiout.open_port(zoom_index)
+zoomout.open_port(zoom_index)
 midiin.open_port(uno_index)
 
 
 
 patch_change = [192, 1]
-midiout.send_message(patch_change)
+zoomout.send_message(patch_change)
 
 class MidiInputHandler(object):
     def __init__(self, port):
@@ -53,7 +54,7 @@ class MidiInputHandler(object):
 
     def __call__(self, event, data=None):
         message, dtime = event
-        midiout.send_message(message)
+        zoomout.send_message(message)
         print("{}".format(message))
 
 midiin.set_callback(MidiInputHandler(available_in_ports[uno_index]))
@@ -65,10 +66,10 @@ except KeyboardInterrupt:
     print('')
 finally:
     print('Exiting')
-    midiout.close_port()
+    zoomout.close_port()
     midiin.close_port()
 
-    del(midiout)
+    del(zoomout)
     del(midiin)
 
 
