@@ -42,7 +42,7 @@ print("Checking GIT workflow")
 print("Opening for input {}".format(available_in_ports[uno_index]))
 print("Opening for output {}".format(available_out_ports[zoom_index]))
 zoomout.open_port(zoom_index)
-m5out.open(uno_index)
+m5out.open_port(uno_index)
 midiin.open_port(uno_index)
 
 
