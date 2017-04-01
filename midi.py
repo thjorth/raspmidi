@@ -49,6 +49,9 @@ while zoom_index == None or uno_re == None:
 zoom_index = 2
 uno_index = 1
 
+cur_zoom_px = -1
+cur_m5_pc = -1
+
 print("Checking GIT workflow")
 print("Opening for input {}".format(available_in_ports[uno_index]))
 print("Opening for output {}".format(available_out_ports[zoom_index]))
@@ -78,8 +81,13 @@ class MidiInputHandler(object):
                 m5_pc = 24;
             
             print("Zoom: {}, M5: {}".format(zoom_pc, m5_pc))
-            zoomout.send_message([192, zoom_pc])
-            m5out.send_message([192, m5_pc])
+            if cur_zoom_pc != zoom_pc:
+                zoomout.send_message([192, zoom_pc])
+                cur_zoom_pc = zoom_pc
+                
+            if cur_m5_pc != m5_pc:
+                m5out.send_message([192, m5_pc])
+                cur_m5_pc = m5_pc
             
         except:
             print ("Unexpected error:", sys.exc_info())
