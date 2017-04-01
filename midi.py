@@ -2,6 +2,14 @@ import rtmidi
 import re
 import time
 
+
+patches = [
+    [-1,-1],
+    [1,1],
+    [2,1],
+    [3,1]
+]
+
 zoomout = rtmidi.MidiOut()
 m5out = rtmidi.MidiOut()
 available_out_ports = zoomout.get_ports()
@@ -45,8 +53,6 @@ zoomout.open_port(zoom_index)
 m5out.open_port(uno_index)
 midiin.open_port(uno_index)
 
-
-
 patch_change = [192, 1]
 zoomout.send_message(patch_change)
 
@@ -56,9 +62,11 @@ class MidiInputHandler(object):
 
     def __call__(self, event, data=None):
         message, dtime = event
+        pc = message[1];
+        
         zoomout.send_message(message)
         m5out.send_message(message)
-        print("{}".format(message))
+        print("{}".format(pc))
 
 midiin.set_callback(MidiInputHandler(available_in_ports[uno_index]))
 
