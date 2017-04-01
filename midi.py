@@ -4,7 +4,18 @@ import time
 import sys
 
 
+
+
 patches = [
+    [10,4],         #1     comp + slap
+    [10,4],         #2     comp + slap
+    [10,4],         #3     comp + slap
+    [10,4],         #4     comp + slap
+    [10,4],         #5     comp + slap
+    [10,4],         #6     comp + slap
+    [10,4],         #7     comp + slap
+    [10,4],         #8     comp + slap
+    [10,4],         #9     comp + slap
     [10,4],         #10     comp + slap
     [11,4],         #11     drive + slap
     [12,1],         #12     heavy drive + mod delay 3/16    
