@@ -69,7 +69,7 @@ class MidiInputHandler(object):
         pc = message[1];
         print("pc: {}".format(pc))
         try:
-            cmd = pathces[pc]
+            cmd = patches[pc]
             print("cmd: {}".format(cmd))
             zoom_pc == cmd[0]
             if zoom_pc < 0:
