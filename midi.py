@@ -71,10 +71,10 @@ class MidiInputHandler(object):
         try:
             cmd = patches[pc]
             print("cmd: {}".format(cmd))
-            zoom_pc == cmd[0]
+            zoom_pc = cmd[0]
             if zoom_pc < 0:
                 zoom_pc = 50
-            m5_pc == cmd[1]
+            m5_pc = cmd[1]
             if m5_pc < 0:
                 m5_pc = 24;
             
