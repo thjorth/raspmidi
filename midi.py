@@ -3,6 +3,7 @@ import re
 import time
 
 zoomout = rtmidi.MidiOut()
+m5out = rtmidi.MidiOut()
 available_out_ports = zoomout.get_ports()
 
 midiin = rtmidi.MidiIn()
@@ -41,6 +42,7 @@ print("Checking GIT workflow")
 print("Opening for input {}".format(available_in_ports[uno_index]))
 print("Opening for output {}".format(available_out_ports[zoom_index]))
 zoomout.open_port(zoom_index)
+m5out.open(uno_index)
 midiin.open_port(uno_index)
 
 
@@ -67,9 +69,12 @@ except KeyboardInterrupt:
 finally:
     print('Exiting')
     zoomout.close_port()
+    m5out.close_port()
     midiin.close_port()
+    
 
     del(zoomout)
+    del(m5out)
     del(midiin)
 
 
