@@ -49,7 +49,7 @@ while zoom_index == None or uno_re == None:
 zoom_index = 2
 uno_index = 1
 
-cur_zoom_px = -1
+cur_zoom_pc = -1
 cur_m5_pc = -1
 
 print("Checking GIT workflow")
