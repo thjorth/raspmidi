@@ -28,8 +28,8 @@ patches = [
     [11,6],         #18     drive + mod delay 1/8
     [11,2],         #19     drive + analog chorus
     [10,24],        #20     comp + bypass     
-    [11,6],         #21     drive + mod delay
-    [12,6],         #22     heavy drive + mod delay
+    [11,8],         #21     drive + mod delay
+    [12,8],         #22     heavy drive + mod delay
     [16,5],         #23     ziggimund + slap verb
     [11,9],         #24     drive + tremolo
     [6,3],          #25
