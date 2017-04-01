@@ -63,9 +63,22 @@ class MidiInputHandler(object):
     def __call__(self, event, data=None):
         message, dtime = event
         pc = message[1];
-        
-        zoomout.send_message(message)
-        m5out.send_message(message)
+        try:
+            cmd = pathces[pc]
+            zoom_pc = cmd[0]
+            if zoom_pc < 0:
+                zoom_pc: 50
+            m5_pc = cmd[1]
+            if m5_pc < 0:
+                m5_pc = 24;
+            
+            print("Zoom: {}, M5: {}".format(zoom_pc, m5_pc))
+            zoomout.send_message([192, zoom_pc])
+            m5out.send_message([192, m5_pc])
+            
+        except:
+            zoomout.send_message(message)
+            m5out.send_message(message)
         print("{}".format(pc))
 
 midiin.set_callback(MidiInputHandler(available_in_ports[uno_index]))
