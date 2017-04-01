@@ -30,8 +30,8 @@ patches = [
     [10,24],        #20     comp + bypass     
     [11,6],         #21     drive + mod delay
     [12,6],         #22     heavy drive + mod delay
-    [6,3],          #23
-    [6,3],          #24
+    [16,5],         #23     ziggimund + slap verb
+    [11,9],         #24     drive + tremolo
     [6,3],          #25
     [6,3],          #27
     [6,3],          #28
