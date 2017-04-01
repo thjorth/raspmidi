@@ -65,6 +65,8 @@ zoomout.send_message(patch_change)
 class MidiInputHandler(object):
     def __init__(self, port):
         self.port = port
+        self.cur_zoom_pc = -1
+        self.cur_m5_pc = -1
 
     def __call__(self, event, data=None):
         message, dtime = event
@@ -81,13 +83,13 @@ class MidiInputHandler(object):
                 m5_pc = 24;
             
             print("Zoom: {}, M5: {}".format(zoom_pc, m5_pc))
-            if cur_zoom_pc != zoom_pc:
+            if self.cur_zoom_pc != zoom_pc:
                 zoomout.send_message([192, zoom_pc])
-                cur_zoom_pc = zoom_pc
+                self.cur_zoom_pc = zoom_pc
                 
-            if cur_m5_pc != m5_pc:
+            if self.cur_m5_pc != m5_pc:
                 m5out.send_message([192, m5_pc])
-                cur_m5_pc = m5_pc
+                self.cur_m5_pc = m5_pc
             
         except:
             print ("Unexpected error:", sys.exc_info())
