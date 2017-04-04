@@ -128,31 +128,32 @@ class MidiInputHandler(object):
 
     def __call__(self, event, data=None):
         message, dtime = event
-        pc = message[1];
-        print("pc: {}".format(pc))
-        try:
-            cmd = patches[pc]
-            print("cmd: {}".format(cmd))
-            zoom_pc = cmd[0] - 1
-            if zoom_pc < 0:
-                zoom_pc = 50
-            m5_pc = cmd[1] - 1
-            if m5_pc < 0:
-                m5_pc = 24;
-            
-            print("Zoom: {}, M5: {}".format(zoom_pc, m5_pc))
-            if self.cur_zoom_pc != zoom_pc:
-                zoomout.send_message([192, zoom_pc])
-                self.cur_zoom_pc = zoom_pc
-                
-            if self.cur_m5_pc != m5_pc:
-                m5out.send_message([192, m5_pc])
-                self.cur_m5_pc = m5_pc
-            
-        except:
-            print ("Unexpected error:", sys.exc_info())
-            zoomout.send_message(message)
-            m5out.send_message(message)
+        if message[0] == 192:
+            pc = message[1];
+            print("pc: {}".format(pc))
+            try:
+                cmd = patches[pc]
+                print("cmd: {}".format(cmd))
+                zoom_pc = cmd[0] - 1
+                if zoom_pc < 0:
+                    zoom_pc = 50
+                m5_pc = cmd[1] - 1
+                if m5_pc < 0:
+                    m5_pc = 24;
+
+                print("Zoom: {}, M5: {}".format(zoom_pc, m5_pc))
+                if self.cur_zoom_pc != zoom_pc:
+                    zoomout.send_message([192, zoom_pc])
+                    self.cur_zoom_pc = zoom_pc
+
+                if self.cur_m5_pc != m5_pc:
+                    m5out.send_message([192, m5_pc])
+                    self.cur_m5_pc = m5_pc
+
+            except:
+                print ("Unexpected error:", sys.exc_info())
+                zoomout.send_message(message)
+                m5out.send_message(message)
 
 midiin.set_callback(MidiInputHandler(available_in_ports[uno_index]))
 
