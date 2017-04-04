@@ -132,6 +132,7 @@ class MidiInputHandler(object):
         print("pc: {}".format(pc))
         try:
             cmd = patches[pc]
+	    print("event: {}".format(event))
             print("cmd: {}".format(cmd))
             zoom_pc = cmd[0] - 1
             if zoom_pc < 0:
