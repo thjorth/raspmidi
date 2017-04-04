@@ -7,33 +7,60 @@ import sys
 
 
 
+#patches = [
+#    [10,4],         #1     comp + slap
+#    [10,4],         #2     comp + slap
+#    [10,4],         #3     comp + slap
+#    [10,4],         #4     comp + slap
+#    [10,4],         #5     comp + slap
+#    [10,4],         #6     comp + slap
+#    [10,4],         #7     comp + slap
+#    [10,4],         #8     comp + slap
+#    [10,4],         #9     comp + slap
+#    [10,5],         #10     comp + slap verb
+#    [11,5],         #11     drive + slap verb
+#    [12,5],         #12     heavy drive + slap verb    
+#    [13,5],         #13     heavy drive, oct + slap verb
+#    [14,5],         #14     heavy drive, oct, flanger + slap verb
+#    [10,3],         #15     comp + particle verb
+#    [11,4],         #16     drive + slap 
+#    [15,4],         #17     drive, phaser + slap
+#    [11,6],         #18     drive + mod delay 1/8
+#    [11,2],         #19     drive + analog chorus
+#    [10,24],        #20     comp + bypass     
+#    [11,8],         #21     drive + mod delay
+#    [12,8],         #22     heavy drive + mod delay
+#    [16,5],         #23     ziggimund + slap verb
+#    [11,9],         #24     drive + tremolo
+#    [6,3],          #25
+#    [6,3],          #27
+#    [6,3],          #28
+#    [6,3],          #29
+#    [6,3],          #30
+#    [6,3],          #31
+#    [6,3],          #32
+#    [6,3],          #33
+#    [6,3]           #34
+#]
+
 patches = [
-    [10,4],         #1     comp + slap
-    [10,4],         #2     comp + slap
-    [10,4],         #3     comp + slap
-    [10,4],         #4     comp + slap
-    [10,4],         #5     comp + slap
-    [10,4],         #6     comp + slap
-    [10,4],         #7     comp + slap
-    [10,4],         #8     comp + slap
-    [10,4],         #9     comp + slap
-    [10,5],         #10     comp + slap verb
-    [11,5],         #11     drive + slap verb
-    [12,5],         #12     heavy drive + slap verb    
-    [13,5],         #13     heavy drive, oct + slap verb
-    [14,5],         #14     heavy drive, oct, flanger + slap verb
-    [10,3],         #15     comp + particle verb
-    [11,4],         #16     drive + slap 
-    [15,4],         #17     drive, phaser + slap
-    [11,6],         #18     drive + mod delay 1/8
-    [11,2],         #19     drive + analog chorus
-    [10,24],        #20     comp + bypass     
-    [11,8],         #21     drive + mod delay
-    [12,8],         #22     heavy drive + mod delay
-    [16,5],         #23     ziggimund + slap verb
-    [11,9],         #24     drive + tremolo
-    [6,3],          #25
-    [6,3],          #27
+    [10,5],         #1    comp + slap verb
+    [11,5],         #2     drive + slap verb
+    [12,5],         #3     heavy drive + slap verb    
+    [13,5],         #4     heavy drive, oct + slap verb
+    [14,5],         #5     heavy drive, oct, flanger + slap verb
+    [10,3],         #6     comp + particle verb
+    [11,4],         #7     drive + slap 
+    [15,4],         #8     drive, phaser + slap
+    [11,6],         #9     drive + mod delay 1/8
+    [11,2],         #10     drive + analog chorus
+    [10,24],        #11     comp + bypass     
+    [11,8],         #12     drive + mod delay
+    [12,8],         #13     heavy drive + mod delay
+    [16,5],         #14     ziggimund + slap verb
+    [11,9],         #15     drive + tremolo
+    [6,3],          #16
+    [6,3],          #17
     [6,3],          #28
     [6,3],          #29
     [6,3],          #30
@@ -42,6 +69,7 @@ patches = [
     [6,3],          #33
     [6,3]           #34
 ]
+
 
 zoomout = rtmidi.MidiOut()
 m5out = rtmidi.MidiOut()
