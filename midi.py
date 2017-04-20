@@ -81,9 +81,13 @@ print(available_out_ports)
 print(available_in_ports)
 
 zoom_index = None
+zoom_drive_index = None
+zoom_time_index = None
 uno_index = None
 
-zoom_re = re.compile('zoom ms series', re.IGNORECASE)
+zoom_re = re.compile('zoom ms series.*24', re.IGNORECASE)
+zoom_drive_re = re.compile('zoom ms series.*24', re.IGNORECASE)
+zoom_time_re = re.compile('zoom ms series.*28', re.IGNORECASE)
 uno_re = re.compile('usb uno midi', re.IGNORECASE)
 
 while zoom_index == None or uno_re == None:
