@@ -107,8 +107,6 @@ while zoom_index == None or uno_re == None:
 
 print("zoom_index {}".format(zoom_index))
 print("uno_index {}".format(uno_index))
-zoom_index = 2
-uno_index = 1
 
 cur_zoom_pc = -1
 cur_m5_pc = -1
