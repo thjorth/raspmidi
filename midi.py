@@ -160,7 +160,7 @@ class MidiInputHandler(object):
                     zoom_drive_out.send_message([192, zoom_drive_pc])
                     self.cur_zoom_drive_pc = zoom_drive_pc
 
-                if self.zoom_time_pc != zoom_time_pc:
+                if self.cur_zoom_time_pc != zoom_time_pc:
                     zoom_time_out.send_message([192, zoom_time_pc])
                     self.cur_zoom_time_pc = zoom_time_pc
 
