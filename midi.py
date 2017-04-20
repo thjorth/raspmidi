@@ -77,8 +77,8 @@ available_out_ports = zoomout.get_ports()
 
 midiin = rtmidi.MidiIn()
 available_in_ports = midiin.get_ports()
-print(available_out_ports)
-print(available_in_ports)
+#print(available_out_ports)
+#print(available_in_ports)
 
 zoom_index = None
 uno_index = None
@@ -92,6 +92,7 @@ while zoom_index == None or uno_re == None:
         available_out_ports = zoomout.get_ports()
         i = 0
         for port in available_out_ports:
+            print(port)
             if zoom_re.search(port) != None:
                 zoom_index = i
                 i += 1
