@@ -71,8 +71,10 @@ patches = [
 ]
 
 
-zoomout = rtmidi.MidiOut()
-m5out = rtmidi.MidiOut()
+#zoomout = rtmidi.MidiOut()
+zoom_drive_out = rtmidi.MidiOut()
+zoom_time_out = rtmidi.MidiOut()
+#m5out = rtmidi.MidiOut()
 available_out_ports = zoomout.get_ports()
 
 midiin = rtmidi.MidiIn()
@@ -80,27 +82,36 @@ available_in_ports = midiin.get_ports()
 print(available_out_ports)
 print(available_in_ports)
 
-zoom_index = None
+#zoom_index = None
 zoom_drive_index = None
 zoom_time_index = None
 uno_index = None
 
-zoom_re = re.compile('zoom ms series.*24', re.IGNORECASE)
+#zoom_re = re.compile('zoom ms series.*24', re.IGNORECASE)
 zoom_drive_re = re.compile('zoom ms series.*24', re.IGNORECASE)
 zoom_time_re = re.compile('zoom ms series.*28', re.IGNORECASE)
 uno_re = re.compile('usb uno midi', re.IGNORECASE)
 
-while zoom_index == None or uno_re == None:
+while zoom_drive_index == None or zoom_time_index == None or uno_re == None:
     time.sleep(1)
-    if zoom_index == None:
-        available_out_ports = zoomout.get_ports()
+    if zoom_drive_index == None:
+        available_out_ports = zoom_drive_out.get_ports()
         i = 0
         for port in available_out_ports:
             print(port)
-            if zoom_re.search(port) != None:
-                zoom_index = i
+            if zoom_drive_re.search(port) != None:
+                zoom_drive_index = i
             i += 1
-                
+
+    if zoom_time_index == None:
+        available_out_ports = zoom_time_out.get_ports()
+        i = 0
+        for port in available_out_ports:
+            print(port)
+            if zoom_time_re.search(port) != None:
+                zoom_time_index = i
+            i += 1
+        
     if uno_index == None:
         available_in_ports = midiin.get_ports()
         i = 0
@@ -109,26 +120,24 @@ while zoom_index == None or uno_re == None:
                 uno_index = i
             i = i+1
 
-print("zoom_index {}".format(zoom_index))
+print("zoom_drive_index {}".format(zoom_drive_index))
+print("zoom_time_index {}".format(zoom_time_index))
 print("uno_index {}".format(uno_index))
 
-cur_zoom_pc = -1
-cur_m5_pc = -1
-
-print("Checking GIT workflow")
-print("Opening for input {}".format(available_in_ports[uno_index]))
-print("Opening for output {}".format(available_out_ports[zoom_index]))
-zoomout.open_port(zoom_index)
-m5out.open_port(uno_index)
+zoom_drive_out.open_port(zoom_drive_index)
+zoom_time_out.open_port(zoom_time_index)
+#m5out.open_port(uno_index)
 midiin.open_port(uno_index)
 
 patch_change = [192, 1]
-zoomout.send_message(patch_change)
+#zoomout.send_message(patch_change)
 
 class MidiInputHandler(object):
     def __init__(self, port):
         self.port = port
         self.cur_zoom_pc = -1
+        self.cur_zoom_drive_pc = -1
+        self.cur_zoom_time_pc = -1
         self.cur_m5_pc = -1
 
     def __call__(self, event, data=None):
@@ -139,26 +148,26 @@ class MidiInputHandler(object):
             try:
                 cmd = patches[pc]
                 print("cmd: {}".format(cmd))
-                zoom_pc = cmd[0] - 1
-                if zoom_pc < 0:
-                    zoom_pc = 50
-                m5_pc = cmd[1] - 1
-                if m5_pc < 0:
-                    m5_pc = 24;
+                zoom_drive_pc = cmd[0] - 1
+                if zoom_drive_pc < 0:
+                    zoom_drive_pc = 50
+                zoom_time_pc = cmd[1] - 1
+                if zoom_time_pc < 0:
+                    zoom_time_pc = 24;
 
-                print("Zoom: {}, M5: {}".format(zoom_pc, m5_pc))
-                if self.cur_zoom_pc != zoom_pc:
-                    zoomout.send_message([192, zoom_pc])
-                    self.cur_zoom_pc = zoom_pc
+                print("Zoom drive: {}, Zoom time: {}".format(zoom_drive_pc, zoom_time_pc))
+                if self.cur_zoom_drive_pc != zoom_drive_pc:
+                    zoom_drive_out.send_message([192, zoom_drive_pc])
+                    self.cur_zoom_drive_pc = zoom_drive_pc
 
-                if self.cur_m5_pc != m5_pc:
-                    m5out.send_message([192, m5_pc])
-                    self.cur_m5_pc = m5_pc
+                if self.zoom_time_pc != zoom_time_pc:
+                    zoom_time_out.send_message([192, zoom_time_pc])
+                    self.cur_zoom_time_pc = zoom_time_pc
 
             except:
                 print ("Unexpected error:", sys.exc_info())
-                zoomout.send_message(message)
-                m5out.send_message(message)
+                #zoomout.send_message(message)
+                #m5out.send_message(message)
 
 midiin.set_callback(MidiInputHandler(available_in_ports[uno_index]))
 
@@ -169,8 +178,10 @@ except KeyboardInterrupt:
     print('')
 finally:
     print('Exiting')
-    zoomout.close_port()
-    m5out.close_port()
+    zoom_drive_out.close_port()
+    zoom_time_out.close_port()
+    #zoomout.close_port()
+    #m5out.close_port()
     midiin.close_port()
     
 
