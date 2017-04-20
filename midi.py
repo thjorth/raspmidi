@@ -75,7 +75,7 @@ patches = [
 zoom_drive_out = rtmidi.MidiOut()
 zoom_time_out = rtmidi.MidiOut()
 #m5out = rtmidi.MidiOut()
-available_out_ports = zoomout.get_ports()
+available_out_ports = zoom_drive_out.get_ports()
 
 midiin = rtmidi.MidiIn()
 available_in_ports = midiin.get_ports()
