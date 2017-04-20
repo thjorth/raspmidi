@@ -105,7 +105,7 @@ while zoom_index == None or uno_re == None:
                 uno_index = i
                 i = i+1
 
-print("zoom_index {}".format(zoom_index)
+print("zoom_index {}".format(zoom_index))
 zoom_index = 2
 uno_index = 1
 
