@@ -83,7 +83,7 @@ available_in_ports = midiin.get_ports()
 zoom_index = None
 uno_index = None
 
-zoom_re = re.compile('zoom ms series', re.IGNORECASE)
+zoom_re = re.compile('zoom ms series.*28', re.IGNORECASE)
 uno_re = re.compile('usb uno midi', re.IGNORECASE)
 
 while zoom_index == None or uno_re == None:
@@ -92,8 +92,8 @@ while zoom_index == None or uno_re == None:
         available_out_ports = zoomout.get_ports()
         i = 0
         for port in available_out_ports:
+            print(port)
             if zoom_re.search(port) != None:
-                print(port)
                 zoom_index = i
                 i += 1
                 
