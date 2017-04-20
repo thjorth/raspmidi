@@ -95,7 +95,7 @@ while zoom_index == None or uno_re == None:
             print(port)
             if zoom_re.search(port) != None:
                 zoom_index = i
-                i += 1
+            i += 1
                 
     if uno_index == None:
         available_in_ports = midiin.get_ports()
@@ -103,7 +103,7 @@ while zoom_index == None or uno_re == None:
         for port in available_in_ports:
             if uno_re.search(port):
                 uno_index = i
-                i = i+1
+            i = i+1
 
 print("zoom_index {}".format(zoom_index))
 print("uno_index {}".format(uno_index))
