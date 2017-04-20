@@ -92,8 +92,8 @@ while zoom_index == None or uno_re == None:
         available_out_ports = zoomout.get_ports()
         i = 0
         for port in available_out_ports:
-            print(port)
             if zoom_re.search(port) != None:
+                print(port)
                 zoom_index = i
                 i += 1
                 
