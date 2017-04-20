@@ -185,7 +185,9 @@ finally:
     midiin.close_port()
     
 
-    del(zoomout)
+    #del(zoomout)
+    del(zoom_drive_out)
+    del(zoom_time_out)
     del(m5out)
     del(midiin)
 
