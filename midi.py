@@ -77,13 +77,13 @@ available_out_ports = zoomout.get_ports()
 
 midiin = rtmidi.MidiIn()
 available_in_ports = midiin.get_ports()
-#print(available_out_ports)
-#print(available_in_ports)
+print(available_out_ports)
+print(available_in_ports)
 
 zoom_index = None
 uno_index = None
 
-zoom_re = re.compile('zoom ms series.*28', re.IGNORECASE)
+zoom_re = re.compile('zoom ms series', re.IGNORECASE)
 uno_re = re.compile('usb uno midi', re.IGNORECASE)
 
 while zoom_index == None or uno_re == None:
@@ -106,6 +106,7 @@ while zoom_index == None or uno_re == None:
                 i = i+1
 
 print("zoom_index {}".format(zoom_index))
+print("uno_index {}".format(uno_index))
 zoom_index = 2
 uno_index = 1
 
